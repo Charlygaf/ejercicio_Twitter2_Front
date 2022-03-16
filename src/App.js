@@ -4,6 +4,7 @@ import Portal from "./pages/Portal";
 import Register from "./pages/Register";
 import { useEffect } from "react";
 import axios from "axios";
+import Home from "./pages/Home";
 
 function App() {
   useEffect(() => {
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Portal />} />
         <Route path="registro" element={<Register />} />
+        <Route path="home" element={<Home />} />
       </Routes>
     </div>
   );
