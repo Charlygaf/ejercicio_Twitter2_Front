@@ -2,7 +2,6 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Portal from "./pages/Portal";
 import Register from "./pages/Register";
-import Home from "./pages/Home";
 import { useEffect } from "react";
 import axios from "axios";
 import Home from "./pages/Home";

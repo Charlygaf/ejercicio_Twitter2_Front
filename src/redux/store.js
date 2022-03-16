@@ -12,13 +12,9 @@ const rootReducer = combineReducers({ tweets: tweetReducer });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-function storeConfig() {
-  let store = createStore(
-    persistedReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
-  let persistor = persistStore(store);
-  return store, persistor;
-}
+export const store = createStore(
+  persistedReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
-export default storeConfig;
+export const persistor = persistStore(store);
