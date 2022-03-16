@@ -4,7 +4,7 @@ function Portal() {
   return (
     <div className="row">
       <div className="col-md-6 d-none d-lg-block bg-img p-5">
-        <img height="200rem" src="../img/twitter.svg" alt="logo" />
+        <img height="200rem" src="./img/twitter.svg" alt="logo" />
       </div>
 
       <div className="col-md-6 m-auto p-5">
@@ -27,14 +27,14 @@ function Portal() {
               action="/login"
               method="POST"
             >
-              <label for="email">Correo electronico</label>
+              <label htmlFor="email">Correo electronico</label>
               <input
                 className="form-control"
                 name="email"
                 type="email"
                 required
               />
-              <label for="password">Contraseña</label>
+              <label htmlFor="password">Contraseña</label>
               <input
                 className="form-control"
                 name="password"
