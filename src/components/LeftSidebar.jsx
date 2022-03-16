@@ -1,105 +1,65 @@
 import React from "react";
+import { BsFillHouseDoorFill, BsBell, BsPerson } from "react-icons/bs";
+import {
+  FaHashtag,
+  FaRegEnvelope,
+  FaRegBookmark,
+  FaRegListAlt,
+} from "react-icons/fa";
+import { CgMoreO } from "react-icons/cg";
 import { Link } from "react-router-dom";
 
 function LeftSidebar() {
   return (
     <div className="height-all-views position-fixed">
       <div className="d-flex flex-column justify-content-between w-100 h-100 align-items-center pe-2">
-        <ul className="sidebar p-0">
+        <ul className="sidebar p-0 ">
           <li className="mt-2">
-            <Link className="sidebar-btn" href="#">
-              <div className="mb-2 sidebar-text">
-                <img
-                  className="side-bar-icon d-inline"
-                  src="img/home.svg"
-                  alt="home"
-                />
-                <p className="sidebar-btn-text">Inicio</p>
-              </div>
+            <Link className="sidebar-btn d-flex align-items-center" to="#">
+              <BsFillHouseDoorFill size={20} />
+              <span className="ms-2  sidebar-btn-text">Inicio</span>
             </Link>
           </li>
           <li className="mt-2">
-            <Link className="sidebar-btn" href="#">
-              <div className="mb-2 sidebar-text">
-                <img
-                  className="side-bar-icon d-inline"
-                  src="img/glass.svg"
-                  alt="search"
-                />
-                <p className="sidebar-btn-text">Explorar</p>
-              </div>
+            <Link className="sidebar-btn d-flex align-items-center" to="#">
+              <FaHashtag size={20} />
+              <span className="ms-2  sidebar-btn-text">Explorar</span>
             </Link>
           </li>
           <li className="mt-2">
-            <Link className="sidebar-btn" href="#">
-              <div className="mb-2 sidebar-text">
-                <img
-                  className="side-bar-icon d-inline"
-                  src="img/bell.svg"
-                  alt="notifications"
-                />
-                <p className="sidebar-btn-text">Notificaciones</p>
-              </div>
+            <Link className="sidebar-btn d-flex align-items-center" to="#">
+              <BsBell size={20} />
+              <span className="ms-2  sidebar-btn-text ">Notificaciones</span>
             </Link>
           </li>
           <li className="mt-2">
-            <Link className="sidebar-btn" href="#">
-              <div className="mb-2 sidebar-text">
-                <img
-                  className="side-bar-icon d-inline"
-                  src="img/mail.svg"
-                  alt="message"
-                />
-                <p className="sidebar-btn-text">Mensajes</p>
-              </div>
+            <Link className="sidebar-btn d-flex align-items-center" to="#">
+              <FaRegEnvelope size={20} />
+              <span className="ms-2  sidebar-btn-text ">Explorar</span>
             </Link>
           </li>
           <li className="mt-2">
-            <Link className="sidebar-btn" href="#">
-              <div className="mb-2 sidebar-text">
-                <img
-                  className="side-bar-icon d-inline"
-                  src="img/pin.svg"
-                  alt="save"
-                />
-                <p className="sidebar-btn-text">Guardados</p>
-              </div>
+            <Link className="sidebar-btn d-flex align-items-center" to="#">
+              <FaRegBookmark size={20} />
+              <span className="ms-2  sidebar-btn-text ">Guardados</span>
             </Link>
           </li>
           <li className="mt-2">
-            <Link className="sidebar-btn" href="#">
-              <div className="mb-2 sidebar-text">
-                <img
-                  className="side-bar-icon d-inline"
-                  src="img/note.svg"
-                  alt="lists"
-                />
-                <p className="sidebar-btn-text">Listas</p>
-              </div>
+            <Link className="sidebar-btn d-flex align-items-center" to="#">
+              <FaRegListAlt size={20} />
+              <span className="ms-2  sidebar-btn-text ">Listas</span>
             </Link>
           </li>
           <li className="mt-2">
-            <Link className="sidebar-btn" href="/<%=currentUser.userName%>">
-              <div className="mb-2 sidebar-text">
-                <img
-                  className="side-bar-icon d-inline"
-                  src="img/user.svg"
-                  alt="profile"
-                />
-                <p className="sidebar-btn-text">Perfil</p>
-              </div>
+            <Link className="sidebar-btn d-flex align-items-center" to="#">
+              <BsPerson size={20} />
+              <span className="ms-2  sidebar-btn-text ">Perfil</span>
             </Link>
           </li>
           <li className="mt-2">
-            <Link className="sidebar-btn" href="#">
-              <div className="mb-2 sidebar-text">
-                <img
-                  className="side-bar-icon d-inline"
-                  src="img/more.svg"
-                  alt="more"
-                />
-                <p className="sidebar-btn-text">Más opciones</p>
-              </div>
+            <Link className="sidebar-btn d-flex align-items-center" to="#">
+              <CgMoreO size={20} />
+              <span className="ms-2  sidebar-btn-text ">Más opciones</span>
             </Link>
           </li>
           <button
@@ -119,18 +79,14 @@ function LeftSidebar() {
             <div className="dropup">
               <Link
                 className="text-decoration-none"
-                href="#"
+                to="#"
                 id="btn-logout"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 <div className="d-flex align-items-center">
                   <div className="w-15 rounded-circle overflow-none">
-                    <img
-                      className="w-100"
-                      src="/img/<%=currentUser.photoProfile%> "
-                      alt="Profile"
-                    />
+                    <img className="w-100" src="# " alt="Profile" />
                   </div>
                   <div className="me-5 ms-2 sidebar-btn-text">
                     <h2 className="fs-5 mb-0 text-white">Current User</h2>
