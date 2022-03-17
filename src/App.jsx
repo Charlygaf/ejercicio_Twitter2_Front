@@ -5,9 +5,10 @@ import Register from "./pages/Register";
 import { useEffect } from "react";
 import axios from "axios";
 import Home from "./pages/Home";
+import PrivateHome from "./components/PrivateHome";
 
 function App() {
-  useEffect(() => {
+  /*   useEffect(() => {
     async function getTweets() {
       try {
         const response = await axios.get("http://localhost:8000/tweets");
@@ -18,13 +19,13 @@ function App() {
     }
     getTweets();
   }, []);
-
+ */
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Portal />} />
         <Route path="/registro" element={<Register />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<PrivateHome element={<Home />} />} />
       </Routes>
     </div>
   );

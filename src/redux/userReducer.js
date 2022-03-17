@@ -1,8 +1,8 @@
-import axios from "axios";
-
-function userReducer(state = [], action) {
+function userReducer(state = [null], action) {
   switch (action.type) {
-    case "ADD_USER":
+    case "LOGIN":
+      return action.payload;
+    case "CREATE_USER":
       return [
         ...state,
         {

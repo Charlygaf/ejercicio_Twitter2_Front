@@ -1,19 +1,34 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function Portal() {
-  const dispatch = useDispatch();
-  const accessToken = useSelector((state) => state.auth.accessToken);
-  const handleLogin = () => {
-    dispatch(login());
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+    axios({
+      method: "POST",
+      url: "http://localhost:8000/api/token",
+      data: {
+        email: email,
+        password: password,
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("error");
+      });
+
+    setEmail("");
+    setPassword("");
   };
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (accessToken) {
-      navigate("/");
-    }
-  }, [accessToken, navigate]);
+
   return (
     <div className="row">
       <div className="col-md-6 d-none d-lg-block bg-img p-5">
