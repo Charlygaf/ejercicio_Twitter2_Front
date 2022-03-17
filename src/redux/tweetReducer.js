@@ -1,5 +1,12 @@
 function tweetReducer(state = [], action) {
   switch (action.type) {
+    case "INITIAL_STATE":
+      return [
+        ...state,
+        {
+          tweets,
+        },
+      ];
     case "ADD_TWEET":
       return state;
     case "DELETE_TWEET":
