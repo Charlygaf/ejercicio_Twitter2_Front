@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function Register() {
+  const store = useSelector((state) => state);
   return (
     <section className="h-100 h-custom">
       <div className="container py-5 h-100">
