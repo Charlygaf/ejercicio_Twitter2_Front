@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Portal() {
+  const dispatch = useDispatch();
+  const accessToken = useSelector((state) => state.auth.accessToken);
+  const handleLogin = () => {
+    dispatch(login());
+  };
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (accessToken) {
+      navigate("/");
+    }
+  }, [accessToken, navigate]);
   return (
     <div className="row">
       <div className="col-md-6 d-none d-lg-block bg-img p-5">
@@ -41,7 +54,9 @@ function Portal() {
                 type="password"
                 required
               />
-              <button className="btn btn-primary my-5">Iniciar sesión</button>
+              <button className="btn btn-primary my-5" onClick={handleLogin}>
+                Iniciar sesión
+              </button>
             </form>
           </div>
 
