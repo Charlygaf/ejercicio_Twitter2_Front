@@ -2,34 +2,51 @@ import { format as formatDate } from "date-fns";
 import { es } from "date-fns/locale";
 import { Link } from "react-router-dom";
 
-function Tweet() {
+function Tweet({ tweet }) {
+  const handleDeleteTweet = () => {
+    axios({
+      method: "DELETE",
+      url: "http://localhost:8000/api/token",
+      data: {
+        id: tweet.id,
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("error");
+      });
+  };
   return (
-    <div className="border-bottom-section position-relative" id="">
-      {" "}
+    <div className="border-bottom-section position-relative" id={tweet.id}>
       <div className="d-flex p-3">
-        {/* <div clasName="dropstart btn-options-tweet">
-            <a
-              clasName="text-white"
-              href="#"
-              id="options-tw"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i clasName="fas fa-ellipsis-h"></i>
-            </a>
-            <div clasName="dropdown-menu bg-black tw-dropdown p-0" aria-labelledby="options-tw">
-              <form action="/delete-tweet?_method=DELETE" method="POST">
-                <input type="hidden" name="id" value="tweet.id" />
-                <button clasName="dropdown-item text-danger dropdown-options-tweet">
-                  <i clasName="fas fa-trash-alt me-3"></i>Eliminar
-                </button>
-              </form>
-            </div>
-          </div> */}
+        <div clasName="dropstart btn-options-tweet">
+          <a
+            clasName="text-white"
+            href="#"
+            id="options-tw"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i clasName="fas fa-ellipsis-h"></i>
+          </a>
+          <div
+            clasName="dropdown-menu bg-black tw-dropdown p-0"
+            aria-labelledby="options-tw"
+          >
+            <form onSubmit={handleDeleteTweet}>
+              <input type="hidden" name="id" value={tweet.id} />
+              <button clasName="dropdown-item text-danger dropdown-options-tweet">
+                <i clasName="fas fa-trash-alt me-3"></i>Eliminar
+              </button>
+            </form>
+          </div>
+        </div>
 
-        <a className="w-15" href="/<%= tweet.user.userName %>">
+        <Link className="w-15" to={`/${tweet.user.userName}`}>
           <img className="w-100 rounded-circle" src="Surubi" alt="#" />
-        </a>
+        </Link>
         <div className="ms-2 pe-3 w-100">
           <div className="mb-2">
             <Link className="link-profile-tweet" to="#">
