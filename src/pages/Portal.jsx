@@ -1,35 +1,29 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import userActions from "../redux/userActions";
 
 function Portal() {
-  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     console.log(email, password);
-    axios({
+    const response = await axios({
       method: "POST",
       url: "http://localhost:8000/api/token",
       data: {
         email: email,
         password: password,
       },
-    })
-      .then((response) => {
-        console.log(response.data);
-        dispatch(userActions.login(response.data));
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log("error");
-      });
-
-    setEmail("");
-    setPassword("");
+    });
+    dispatch(userActions.login(response.data));
+    navigate("/home");
+    console.log(response.data);
   };
 
   return (

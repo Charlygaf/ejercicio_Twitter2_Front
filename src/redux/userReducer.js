@@ -5,7 +5,7 @@ function userReducer(state = [null], action) {
         ...state,
         {
           ...state.users,
-          ...{ ...state.users.currentSession, ...action.payload },
+          ...{ ...state.users, ...action.payload },
         },
       ];
     case "CREATE_USER":
