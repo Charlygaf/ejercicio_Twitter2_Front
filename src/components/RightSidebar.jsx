@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-function RighSidebar({ users }) {
+function RighSidebar() {
+  const users = useSelector((state) => state.users);
+  // traer lista de usaurios recomendados con un condicional de users y req.user
   return (
     <section className="">
       {/* <!-- sticky Search Nav --> */}
@@ -26,7 +29,7 @@ function RighSidebar({ users }) {
           <div className="col m-0 p-0">
             <ul className="sidebar mx-1 my-0 p-0">
               {users.map((user) => (
-                <li className="">
+                <li>
                   <form
                     className="d-flex justify-content-between align-items-center me-0"
                     action="/follow"

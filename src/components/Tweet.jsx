@@ -1,6 +1,7 @@
 import { format as formatDate } from "date-fns";
 import { es } from "date-fns/locale";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Tweet({ tweet }) {
   const handleDeleteTweet = () => {
@@ -21,41 +22,43 @@ function Tweet({ tweet }) {
   return (
     <div className="border-bottom-section position-relative" id={tweet.id}>
       <div className="d-flex p-3">
-        <div clasName="dropstart btn-options-tweet">
-          <a
-            clasName="text-white"
-            href="#"
+        <div className="dropstart btn-options-tweet">
+          <Link
+            className="text-white"
+            to={"/home"}
             id="options-tw"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <i clasName="fas fa-ellipsis-h"></i>
-          </a>
+            <i className="fas fa-ellipsis-h"></i>
+          </Link>
           <div
-            clasName="dropdown-menu bg-black tw-dropdown p-0"
+            className="dropdown-menu bg-black tw-dropdown p-0"
             aria-labelledby="options-tw"
           >
             <form onSubmit={handleDeleteTweet}>
               <input type="hidden" name="id" value={tweet.id} />
-              <button clasName="dropdown-item text-danger dropdown-options-tweet">
-                <i clasName="fas fa-trash-alt me-3"></i>Eliminar
+              <button className="dropdown-item text-danger dropdown-options-tweet">
+                <i className="fas fa-trash-alt me-3"></i>Eliminar
               </button>
             </form>
           </div>
         </div>
 
-        <Link className="w-15" to={`/${tweet.user.userName}`}>
-          <img className="w-100 rounded-circle" src="Surubi" alt="#" />
+        <Link className="w-15" to={`/${tweet.user.username}`}>
+          <img
+            className="w-100 rounded-circle"
+            src="https://thispersondoesnotexist.com"
+            alt="#"
+          />
         </Link>
         <div className="ms-2 pe-3 w-100">
           <div className="mb-2">
             <Link className="link-profile-tweet" to="#">
               <span className="underline">
-                {/* {tweet.user.firstname} {tweet.user.lastname}{" "} */}
+                {tweet.user.firstname} {tweet.user.lastname}{" "}
               </span>
-              <span className="text-secondary">
-                @{/* {tweet.user.userName} */} ·{/* {" "} */}
-              </span>
+              <span className="text-secondary">@{tweet.user.userName}</span>
             </Link>
             <Link className="date-tweet text-secondary" to="#">
               {formatDate(new Date(), "d MMM'.' Y", {
@@ -64,7 +67,7 @@ function Tweet({ tweet }) {
             </Link>
           </div>
           {/* body tweet */}
-          <div className="fw-lighter">{/* {tweet.content} */}</div>
+          <div className="fw-lighter text-light"> {tweet.content} </div>
           {/* footer tweet */}
           <div className="d-flex mb-0 mt-3">
             <div className="me-5">
@@ -87,11 +90,11 @@ function Tweet({ tweet }) {
             </div>
 
             <form className="me-5" action="/like" method="post">
-              <input type="hidden" name="id" /* value={tweet.id} */ />
+              <input type="hidden" name="id" value={tweet.id} />
               <button className="rounded-circle btn-action-tweet like">
                 <i className="far fa-heart"></i>
               </button>
-              {/* <span>{tweet.likes.length}</span> */}
+              <span>{tweet.likes.length}</span>
             </form>
             <div className="me-5">
               <button
