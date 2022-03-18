@@ -8,18 +8,6 @@ import Home from "./pages/Home";
 import PrivateHome from "./components/PrivateHome";
 
 function App() {
-  /*   useEffect(() => {
-    async function getTweets() {
-      try {
-        const response = await axios.get("http://localhost:8000/tweets");
-        console.log(response);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getTweets();
-  }, []);
- */
   return (
     <div className="App">
       <Routes>
