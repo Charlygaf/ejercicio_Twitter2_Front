@@ -1,7 +1,7 @@
-import axios from "axios";
-
 function userReducer(state = [], action) {
   switch (action.type) {
+    case "INIT_USERS":
+      return [...state, action.payload];
     case "ADD_USER":
       return state;
     case "ADD_FOLLOWER":
