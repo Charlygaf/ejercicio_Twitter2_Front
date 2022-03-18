@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 
 import Home from "./pages/Home";
 import PrivateHome from "./components/PrivateHome";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -12,7 +13,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Portal />} />
         <Route path="/registro" element={<Register />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<PrivateHome element={<Home />} />} />
+        <Route
+          path="/:username"
+          element={<PrivateHome element={<Profile />} />}
+        />
       </Routes>
     </div>
   );

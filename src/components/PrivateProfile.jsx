@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate, Route } from "react-router-dom";
 import Home from "../pages/Home";
 
-function PrivateHome({ element, ...rest }) {
+function PrivateProfile({ element, ...rest }) {
   const user = useSelector((state) => state.users);
   if (!user) {
     return <Navigate to="/" />;
@@ -11,4 +11,4 @@ function PrivateHome({ element, ...rest }) {
     return element;
   }
 }
-export default PrivateHome;
+export default PrivateProfile;

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import userActions from "../redux/userActions";
 
 function Portal() {
@@ -9,6 +9,14 @@ function Portal() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const accessToken = useSelector((state) => state.accessToken);
+
+  useEffect(() => {
+    if (accessToken) {
+      navigate("/home");
+    }
+  }, [accessToken, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
