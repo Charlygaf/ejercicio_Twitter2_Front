@@ -4,8 +4,8 @@ import { Navigate, Route } from "react-router-dom";
 import Home from "../pages/Home";
 
 function PrivateHome({ element, ...rest }) {
-  const user = useSelector((state) => state.user);
-
+  const user = useSelector((state) => state);
+  console.log("ultimo", user);
   if (!user) {
     return <Navigate to="/" />;
   } else {

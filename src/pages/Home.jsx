@@ -32,7 +32,7 @@ function Home() {
       </div>
       <div className="col-lg-6"></div>
       <div className="col-lg-3">
-        <RighSidebar users={users} />
+        {/*         <RighSidebar users={users} /> */}
       </div>
     </div>
   );
