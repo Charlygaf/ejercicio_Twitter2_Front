@@ -1,6 +1,37 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import userActions from "../redux/userActions";
 
 function Portal() {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(email, password);
+    axios({
+      method: "POST",
+      url: "http://localhost:8000/api/token",
+      data: {
+        email: email,
+        password: password,
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+        dispatch(userActions.login(response.data));
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("error");
+      });
+
+    setEmail("");
+    setPassword("");
+  };
+
   return (
     <div className="row">
       <div className="col-md-6 d-none d-lg-block bg-img p-5">
@@ -22,26 +53,33 @@ function Portal() {
         <header>
           <div className="m-0 p-0 text-light">
             <form
+              onSubmit={handleLogin}
               className="text-start text-light"
               style={{ maxWidth: "700px" }}
-              action="/login"
+              action="/api/token"
               method="POST"
             >
               <label htmlFor="email">Correo electronico</label>
               <input
+                value={email}
                 className="form-control"
                 name="email"
                 type="email"
                 required
+                onChange={(ev) => setEmail(ev.target.value)}
               />
               <label htmlFor="password">Contraseña</label>
               <input
+                value={password}
                 className="form-control"
                 name="password"
                 type="password"
                 required
+                onChange={(ev) => setPassword(ev.target.value)}
               />
-              <button className="btn btn-primary my-5">Iniciar sesión</button>
+              <button type="submit" className="btn btn-primary my-5">
+                Iniciar sesión
+              </button>
             </form>
           </div>
 

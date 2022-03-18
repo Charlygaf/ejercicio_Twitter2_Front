@@ -1,5 +1,6 @@
 import { combineReducers, createStore } from "redux";
 import tweetReducer from "./tweetReducer";
+import userReducer from "./userReducer";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -8,7 +9,10 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ tweets: tweetReducer });
+const rootReducer = combineReducers({
+  tweets: tweetReducer,
+  users: userReducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

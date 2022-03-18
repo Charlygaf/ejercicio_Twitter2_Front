@@ -1,22 +1,21 @@
 import React from "react";
-// import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LeftSidebar from "../components/LeftSidebar";
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import RighSidebar from "../components/RightSidebar";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
 
 function Home() {
-  const users = useSelector((state) => state);
+  const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
-  // const [users, setUsers] = useState([]);
 
   useEffect(() => {
     async function getUsers() {
       try {
-        const { data } = await axios.get("http://localhost:8000/users");
-        dispatch({ type: "INIT_USERS", payload: data.data.users });
+        const tweets = await axios.get("http://localhost:8000/tweets");
+        setUsers(tweets);
+        dispatch({ type: "INITIAL_STATE", payload: tweets });
         console.log(users);
       } catch (error) {
         console.log("error");
@@ -32,8 +31,9 @@ function Home() {
         <LeftSidebar />
       </div>
       <div className="col-lg-6"></div>
-
-      <div className="col-lg-3"></div>
+      <div className="col-lg-3">
+        <RighSidebar users={users} />
+      </div>
     </div>
   );
 }
