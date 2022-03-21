@@ -5,6 +5,12 @@ const userActions = {
       payload: session,
     };
   },
+  signUp: function (user) {
+    return {
+      type: "SIGN_UP",
+      payload: user,
+    };
+  },
 };
 
 export default userActions;
