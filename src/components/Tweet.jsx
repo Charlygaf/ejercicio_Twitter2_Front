@@ -1,7 +1,8 @@
 import { format as formatDate } from "date-fns";
 import { es } from "date-fns/locale";
 import { Link } from "react-router-dom";
-import tweetActions from "../redux/tweetActions";
+
+import axios from "axios";
 
 function Tweet({ tweet, user }) {
   const handleDeleteTweet = () => {
@@ -60,11 +61,11 @@ function Tweet({ tweet, user }) {
               </span>
               <span className="text-secondary">@{tweet.user.userName}</span>
             </Link>
-            {/*             <Link className="date-tweet text-secondary" to="#">
+            <Link className="date-tweet text-secondary" to="#">
               {formatDate(new Date(), "d MMM'.' Y", {
                 locale: es,
               })}
-            </Link> */}
+            </Link>
           </div>
           {/* body tweet */}
           <div className="fw-lighter text-light"> {tweet.content} </div>

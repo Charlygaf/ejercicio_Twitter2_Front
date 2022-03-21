@@ -2,8 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-function RighSidebar() {
-  const users = useSelector((state) => state.users);
+function RightSidebar({ users }) {
+  const user = useSelector((state) => state.users[1].user);
+  console.log(user);
   // traer lista de usaurios recomendados con un condicional de users y req.user
   return (
     <section className="">
@@ -62,4 +63,4 @@ function RighSidebar() {
   );
 }
 
-export default RighSidebar;
+export default RightSidebar;
