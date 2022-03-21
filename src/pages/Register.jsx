@@ -1,8 +1,45 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import userActions from "../redux/userActions";
 
 function Register() {
-  const store = useSelector((state) => state);
+  const accessToken = useSelector((state) => state.accessToken);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (accessToken) {
+      navigate("/home");
+    }
+  }, [accessToken, navigate]);
+
+  const dispatch = useDispatch();
+  const [user, setUser] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    userName: "",
+    birthDate: "",
+    password: "",
+  });
+  console.log(user);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await axios({
+      method: "POST",
+      url: "http://localhost:8000/user",
+      data: {
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        userName: user.userName,
+        birthDate: user.birtDate,
+        password: user.password,
+      },
+    });
+    dispatch(userActions.signUp(response.data));
+    navigate("/home");
+  };
   return (
     <section className="h-100 h-custom">
       <div className="container py-5 h-100">
@@ -24,9 +61,9 @@ function Register() {
                 </h3>
 
                 <form
+                  onSubmit={handleSubmit}
                   id="registro"
                   className="px-md-2"
-                  action="/registro"
                   method="POST"
                 >
                   <div className="d-flex justify-content-between">
@@ -38,6 +75,10 @@ function Register() {
                         Nombre
                       </label>
                       <input
+                        value={user.firstname}
+                        onChange={(ev) => {
+                          setUser({ ...user, firstname: ev.target.value });
+                        }}
                         type="text"
                         id="firstname"
                         className="form-control rounded-pill"
@@ -53,6 +94,10 @@ function Register() {
                         Apellido
                       </label>
                       <input
+                        value={user.lastname}
+                        onChange={(ev) => {
+                          setUser({ ...user, lastname: ev.target.value });
+                        }}
                         type="text"
                         id="lastname"
                         className="form-control rounded-pill"
@@ -65,11 +110,15 @@ function Register() {
                     <div className="form-outline mb-2">
                       <label
                         className="form-label text-white font-register"
-                        for="email"
+                        htmlFor="email"
                       >
                         E-mail
                       </label>
                       <input
+                        value={user.email}
+                        onChange={(ev) => {
+                          setUser({ ...user, email: ev.target.value });
+                        }}
                         type="email"
                         id="email"
                         className="form-control rounded-pill"
@@ -85,6 +134,10 @@ function Register() {
                         Fecha de nacimiento
                       </label>
                       <input
+                        value={user.birthDate}
+                        onChange={(ev) => {
+                          setUser({ ...user, birtDate: ev.target.value });
+                        }}
                         className="rounded-pill form-control mb-2"
                         type="date"
                         id="birthDate"
@@ -102,6 +155,10 @@ function Register() {
                       </label>
                       <div className="rounded-pill">
                         <input
+                          value={user.userName}
+                          onChange={(ev) => {
+                            setUser({ ...user, userName: ev.target.value });
+                          }}
                           type="text"
                           id="userName"
                           className="form-control rounded-pill"
@@ -118,6 +175,10 @@ function Register() {
                         Contraseña
                       </label>
                       <input
+                        value={user.password}
+                        onChange={(ev) => {
+                          setUser({ ...user, password: ev.target.value });
+                        }}
                         type="password"
                         id="password"
                         className="form-control rounded-pill"

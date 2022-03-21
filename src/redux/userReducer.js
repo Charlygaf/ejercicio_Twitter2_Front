@@ -8,7 +8,7 @@ function userReducer(state = [null], action) {
           ...{ ...state.users, ...action.payload },
         },
       ];
-    case "CREATE_USER":
+    case "SIGN_UP":
       return state;
     case "ADD_FOLLOWER":
       return state;
