@@ -7,6 +7,7 @@ import RightSidebar from "../components/RightSidebar";
 
 import axios from "axios";
 import Tweet from "../components/Tweet";
+import tweetActions from "../redux/tweetActions";
 
 function Home() {
   const tweetList = useSelector((state) => state.tweets[0].data);
@@ -17,11 +18,7 @@ function Home() {
     async function getData() {
       try {
         const tweets = await axios.get("http://localhost:8000/tweets");
-
-        dispatch({
-          type: "INITIAL_STATE",
-          payload: tweets.data[0],
-        });
+        dispatch(tweetActions.initialState(tweets));
       } catch (error) {
         console.log("error");
       }
@@ -37,7 +34,7 @@ function Home() {
         <div className="col-lg-3">
           <LeftSidebar />
         </div>
-        <div className="col-lg-6">
+        <div className="col-lg-6 ">
           {tweetList.slice(0, 5).map((tweet) => (
             <Tweet key={tweet._id} tweet={tweet} />
           ))}

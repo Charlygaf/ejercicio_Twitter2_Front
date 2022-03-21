@@ -35,7 +35,7 @@ function Portal() {
   };
 
   return (
-    <div className="row">
+    <div className="row w-100">
       <div className="col-md-6 d-none d-lg-block bg-img p-5">
         <img height="200rem" src="./img/twitter.svg" alt="logo" />
       </div>
