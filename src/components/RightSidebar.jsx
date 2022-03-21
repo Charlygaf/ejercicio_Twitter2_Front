@@ -5,8 +5,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 function RightSidebar() {
-  const loggedUser = useSelector((state) => state.users[1].user);
-
   const [usersList, setUsersList] = useState([]);
 
   useEffect(() => {
@@ -50,7 +48,7 @@ function RightSidebar() {
           <div className="col m-0 p-0">
             <ul className="sidebar mx-1 my-0 p-0">
               {usersList.slice(0, 3).map((user) => (
-                <li key={user.id}>
+                <li key={user._id}>
                   <form
                     className="d-flex justify-content-between align-items-center me-0"
                     action="/follow"
@@ -59,7 +57,7 @@ function RightSidebar() {
                     <Link to={`/${user.firstname}`}>
                       <img
                         className="rounded-circle w-15 side-bar-icon d-inline m-0"
-                        src={`/img/${user.photoProfile}`}
+                        src="../img/defaulteProfile.jpeg"
                         alt="Profile_Img"
                       />
                       <p className="d-none d-lg-inline"> {user.firstname}</p>

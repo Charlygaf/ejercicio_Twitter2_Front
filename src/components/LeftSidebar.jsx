@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function LeftSidebar() {
-  const user = useSelector((state) => state.users[1].user);
+  const user = useSelector((state) => state.user);
   return (
     <div className="height-all-views position-fixed">
       <div className="d-flex flex-column justify-content-between w-100 h-100 align-items-center pe-2">
@@ -108,7 +108,7 @@ function LeftSidebar() {
                 className="dropdown-menu bg-black tw-dropdown p-0"
                 aria-labelledby="options-tw"
               >
-                <form action="/logout?_method=DELETE" method="POST">
+                <form action="" method="POST">
                   <button
                     className="btn btn-outline-danger border-0 w-100"
                     type="submit"

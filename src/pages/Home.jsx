@@ -39,7 +39,7 @@ function Home() {
         </div>
         <div className="col-lg-6">
           {tweetList.slice(0, 5).map((tweet) => (
-            <Tweet key={tweet.id} tweet={tweet} />
+            <Tweet key={tweet._id} tweet={tweet} />
           ))}
         </div>
 

@@ -10,7 +10,7 @@ function Portal() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const accessToken = useSelector((state) => state.accessToken);
+  const accessToken = useSelector((state) => state.user.accessToken);
 
   useEffect(() => {
     if (accessToken) {
@@ -29,9 +29,9 @@ function Portal() {
         password: password,
       },
     });
+    console.log(response.data);
     dispatch(userActions.login(response.data));
     navigate("/home");
-    console.log(response.data);
   };
 
   return (

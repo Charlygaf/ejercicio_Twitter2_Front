@@ -48,7 +48,7 @@ function Tweet({ tweet, user }) {
         <Link className="w-15" to={`/${tweet.user.username}`}>
           <img
             className="w-100 rounded-circle"
-            src="https://thispersondoesnotexist.com/"
+            src="../img/defaulteProfile.jpeg"
             alt="#"
           />
         </Link>

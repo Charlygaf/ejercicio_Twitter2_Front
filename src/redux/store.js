@@ -11,7 +11,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   tweets: tweetReducer,
-  users: userReducer,
+  user: userReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

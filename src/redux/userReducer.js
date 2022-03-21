@@ -1,13 +1,7 @@
-function userReducer(state = [null], action) {
+function userReducer(state = {}, action) {
   switch (action.type) {
     case "LOGIN":
-      return [
-        ...state,
-        {
-          ...state.users,
-          ...{ ...state.users, ...action.payload },
-        },
-      ];
+      return action.payload;
     case "SIGN_UP":
       return state;
     case "ADD_FOLLOWER":

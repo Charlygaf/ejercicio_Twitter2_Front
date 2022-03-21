@@ -4,7 +4,7 @@ import { Navigate, Route } from "react-router-dom";
 import Home from "../pages/Home";
 
 function PrivateHome({ element, ...rest }) {
-  const token = useSelector((state) => state.accessToken);
+  const token = useSelector((state) => state.user.accessToken);
   if (!token) {
     return <Navigate to="/" />;
   } else {

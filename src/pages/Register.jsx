@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import userActions from "../redux/userActions";
 
 function Register() {
-  const accessToken = useSelector((state) => state.accessToken);
+  const accessToken = useSelector((state) => state.user.accessToken);
   const navigate = useNavigate();
   useEffect(() => {
     if (accessToken) {
