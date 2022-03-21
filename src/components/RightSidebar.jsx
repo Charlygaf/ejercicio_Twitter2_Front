@@ -1,10 +1,30 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
-function RightSidebar({ users }) {
-  const user = useSelector((state) => state.users[1].user);
-  console.log(user);
+function RightSidebar() {
+  const loggedUser = useSelector((state) => state.users[1].user);
+
+  const [usersList, setUsersList] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      try {
+        const { data } = await axios.get("http://localhost:8000/users");
+
+        console.log("llamada axios", data);
+        setUsersList(data);
+      } catch (error) {
+        console.log("error");
+      }
+    }
+
+    getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // traer lista de usaurios recomendados con un condicional de users y req.user
   return (
     <section className="">
@@ -29,8 +49,8 @@ function RightSidebar({ users }) {
         <div className="row">
           <div className="col m-0 p-0">
             <ul className="sidebar mx-1 my-0 p-0">
-              {users.map((user) => (
-                <li>
+              {usersList.slice(0, 3).map((user) => (
+                <li key={user.id}>
                   <form
                     className="d-flex justify-content-between align-items-center me-0"
                     action="/follow"
@@ -38,7 +58,7 @@ function RightSidebar({ users }) {
                   >
                     <Link to={`/${user.firstname}`}>
                       <img
-                        classNameName="rounded-circle w-15 side-bar-icon d-inline m-0"
+                        className="rounded-circle w-15 side-bar-icon d-inline m-0"
                         src={`/img/${user.photoProfile}`}
                         alt="Profile_Img"
                       />
