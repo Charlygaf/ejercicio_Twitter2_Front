@@ -128,16 +128,23 @@ body {
 }
 
 .ph-profile {
+  width: 8rem;
+  height: 8rem;
+  background-color: rgba(255, 255, 255, 0.5);
   border: 0.3rem solid var(--color-dark);
   position: absolute;
   top: -100%;
   left: 1rem;
-  /* //object-fit: cover; */
-  /* object-fit: fill; */
-  /*   object-fit: contain; */
+  object-fit: cover;
+  text-align: center;
 }
+
 .ph-friend-suggestions {
   border: 0.3rem solid var(--color-dark);
+}
+
+.contain-photo-profile {
+  height: 4rem;
 }
 
 .ph-cover {
@@ -256,7 +263,7 @@ textarea {
 
 .bg-nav {
   background-color: var(--color-nav-blur);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
 }
 
 .border-horizon-main {

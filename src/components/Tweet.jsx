@@ -2,6 +2,8 @@ import axios from "axios";
 import { format as formatDate } from "date-fns";
 import { es } from "date-fns/locale";
 import { Link } from "react-router-dom";
+import tweetActions from "../redux/tweetActions";
+import axios from "axios";
 
 function Tweet({ tweet, user }) {
   const handleDeleteTweet = () => {
