@@ -9,6 +9,7 @@ import {
 import { CgMoreO } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import ModalTweet from "./ModalTweet";
 
 function LeftSidebar() {
   const user = useSelector((state) => state.user);
@@ -67,17 +68,7 @@ function LeftSidebar() {
               <span className="ms-2  sidebar-btn-text ">Más opciones</span>
             </Link>
           </li>
-          <button
-            id="button-tweet"
-            className="btn btn-primary rounded-pill mt-3 p-1 px-2 sidebar-btn w-100"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-          >
-            <span className="sidebar-btn-text">Twittear</span>
-            <span className="sidebar-btn-icon">
-              <i className="fas fa-feather-alt"></i>
-            </span>
-          </button>
+          <ModalTweet />
         </ul>
         <ul className="sidebar p-0 mb-5">
           <li className="p-2 rounded-pill">

@@ -14,7 +14,6 @@ function Profile() {
       const { data } = await axios.get(
         `http://localhost:8000/users/${username}`
       );
-      console.log(response);
       setUser(data.user);
       setTweets(data.tweets);
       return data;

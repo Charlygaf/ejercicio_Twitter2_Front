@@ -223,7 +223,15 @@ body {
   overflow: hidden;
 }
 
-textarea {
+.modal-bg {
+  background-color: rgba(91, 112, 131, 0.4);
+}
+
+.input-content-tweet {
+  color: white;
+  background-color: var(--color-dark);
+  font-size: 1.3rem;
+  width: 100%;
   border: none;
   overflow: auto;
   outline: none;
